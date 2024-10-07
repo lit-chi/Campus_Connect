@@ -1,31 +1,54 @@
 const express = require('express');
+const User = require('../models/User'); // Ensure this path is correct based on your project structure
 const router = express.Router();
 
-// Sample GET route for fetching all users
-router.get('/', (req, res) => {
-    res.send('Fetch all users'); // Replace this with your logic to get users from the database
+// POST endpoint to create a new user
+router.post('/', async (req, res) => {
+    try {
+        const newUser = new User(req.body);
+        await newUser.save(); // Save the user to the database
+        res.status(201).json(newUser); // Return the created user
+    } catch (err) {
+        res.status(400).json({ message: err.message }); // Return an error message if validation fails
+    }
 });
 
-// Sample POST route for creating a new user
-router.post('/', (req, res) => {
-    const newUser = req.body; // Assume the user details are sent in the body
-    // Logic to save the user to the database would go here
-    res.status(201).send(newUser); // Sending back the created user
+// GET endpoint to fetch all users
+router.get('/', async (req, res) => {
+    try {
+        const users = await User.find(); // Fetch all users from the database
+        res.json(users); // Return the list of users
+    } catch (err) {
+        res.status(500).json({ message: err.message }); // Return an error message if something goes wrong
+    }
 });
 
-// Sample GET route for fetching a specific user by ID
-router.get('/:id', (req, res) => {
-    const userId = req.params.id;
-    // Logic to fetch user by ID would go here
-    res.send(`Fetch user with ID: ${userId}`); // Replace this with your logic
+// GET endpoint for fetching a specific user by ID
+router.get('/:id', async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const user = await User.findById(userId); // Find the user by ID
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' }); // Handle case where user is not found
+        }
+        res.json(user); // Return the found user
+    } catch (err) {
+        res.status(500).json({ message: err.message }); // Return an error message if something goes wrong
+    }
 });
 
-// Sample PUT route for updating a user
-router.put('/:id', (req, res) => {
-    const userId = req.params.id;
-    const updatedUser = req.body; // Assume updated user details are sent in the body
-    // Logic to update the user in the database would go here
-    res.send(`User with ID: ${userId} updated`); // Replace this with your logic
+// PUT endpoint for updating a user
+router.put('/:id', async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const updatedUser = await User.findByIdAndUpdate(userId, req.body, { new: true }); // Update the user
+        if (!updatedUser) {
+            return res.status(404).json({ message: 'User not found' }); // Handle case where user is not found
+        }
+        res.json(updatedUser); // Return the updated user
+    } catch (err) {
+        res.status(400).json({ message: err.message }); // Return an error message if validation fails
+    }
 });
 
 module.exports = router;

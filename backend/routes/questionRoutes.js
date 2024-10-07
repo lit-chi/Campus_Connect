@@ -14,12 +14,20 @@ router.get('/', async (req, res) => {
 
 // POST a new question
 router.post('/', async (req, res) => {
+    // Ensure the required fields are provided
+    const { content, title, image, tags, postedBy } = req.body;
+
+    // Check for required fields
+    if (!content || !postedBy) {
+        return res.status(400).json({ message: 'Content and postedBy are required.' });
+    }
+
     const question = new Question({
-        title: req.body.title,
-        content: req.body.content,
-        image: req.body.image, // Include the image field
-        tags: req.body.tags,
-        postedBy: req.body.postedBy,
+        title,
+        content,
+        image, // Include the image field
+        tags,
+        postedBy, // This should be the ObjectId of the user posting the question
     });
 
     try {
@@ -33,4 +41,5 @@ router.post('/', async (req, res) => {
 // Other routes (GET, PUT, DELETE) can be defined similarly
 
 module.exports = router;
+
 
