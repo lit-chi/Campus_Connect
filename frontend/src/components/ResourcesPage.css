@@ -1,0 +1,43 @@
+.resources-page {
+    padding: 50px; /* Provides space around the page content */
+    margin-left: 40px; /* Keeps cards slightly away from the minimized hover panel */
+}
+
+.resources-container {
+    margin-left: 40px; /* Aligns cards slightly away from the minimized hover panel */
+    display: flex;
+    flex-wrap: wrap; /* Allows cards to wrap onto the next line if there's not enough space */
+    gap: 20px; /* Space between individual cards */
+}
+
+/* Adjust card size based on the hover state */
+.resource-card {
+    width: calc(23% - 20px); /* Adjusted width of the cards to fit more cards in a row */
+    padding: 15px; /* Inner space within each card */
+    background-color: #ffffff; /* Card background color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect for depth */
+    display: flex;
+    flex-direction: column; /* Stacks child elements vertically */
+    justify-content: space-between; /* Evenly distributes space within the card */
+}
+
+/* When the hover panel is minimized, shift the cards */
+:not(.hover-active) .resources-container .resource-card {
+    margin-left: 0px; /* Adjust this value to create space for the minimized hover panel */
+}
+
+/* When the hover panel is minimized, shift the title */
+:not(.hover-active) .resources-page h2 {
+    margin-left: 45px; /* Shift title to the right when hover panel is minimized */
+}
+
+/* When the hover panel is expanded, shift the cards back */
+.hover-active .resources-container .resource-card {
+    margin-left: 80px; /* Reset margin when the hover panel is expanded */
+}
+
+/* When the hover panel is expanded, shift the title back */
+.hover-active .resources-page h2 {
+    margin-left: 120px; /* Reset title margin when hover panel is expanded */
+}

@@ -1,0 +1,67 @@
+.hover-panel {
+    width: 70px; /* Default width */
+    background-color: #5b5b5b;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease-in-out;
+    overflow: hidden; /* Prevent overflow during transition */
+}
+
+.hover-panel.expanded {
+    width: 200px; /* Expanded width */
+}
+
+.profile {
+    text-align: center;
+    padding: 10px;
+}
+
+.profile-pic {
+    width: 50px; /* Adjust as needed */
+    height: 50px; /* Adjust as needed */
+    border-radius: 50%;
+}
+
+.username {
+    margin-top: 5px;
+    transition: opacity 0.3s ease-in-out; /* Smooth opacity transition */
+}
+
+.divider {
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+.menu {
+    padding: 10px;
+    transition: max-height 0.3s ease-in-out; /* Smooth max-height transition */
+    max-height: 0; /* Collapsed state */
+    overflow: hidden; /* Prevent overflow during transition */
+}
+
+.hover-panel.expanded .menu {
+    max-height: 100px; /* Set a max-height that fits the content */
+}
+
+.menu-item {
+    text-decoration: none;
+    color: #ffffff; /* Adjust link color */
+    display: block;
+    padding: 5px 0; /* Space between items */
+    opacity: 0; /* Hidden state */
+    transform: translateY(-10px); /* Slight upward movement */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transitions */
+}
+
+.hover-panel.expanded .menu-item {
+    opacity: 1; /* Visible state */
+    transform: translateY(0); /* Move back to original position */
+}
+
+.menu-divider {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 5px 0; /* Space between items and divider */
+}

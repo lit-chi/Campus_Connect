@@ -1,0 +1,48 @@
+/* Login Page Styles */
+.login-page {
+    display: flex;                /* Use flexbox */
+    justify-content: center;      /* Center horizontally */
+    align-items: center;          /* Center vertically */
+    height: 100vh;                /* Full height of the viewport */
+    width: 100%;                  /* Full width of the viewport */
+    margin: 0;                   /* Remove default margin */
+  }
+  
+  .login-card {
+    width: 350px;                /* Width for the card */
+    margin: auto;                /* Centers the card if width is defined */
+    padding: 30px;              /* Increased padding inside the card */
+    background-color: white;    /* Card background color */
+    border-radius: 8px;         /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    display: flex;              /* Use flexbox for inner elements */
+    flex-direction: column;      /* Stack elements vertically */
+    align-items: center;         /* Center elements horizontally */
+  }
+  
+  .login-card h2 {
+    text-align: center;          /* Center text in the card */
+    margin-bottom: 20px;        /* Space below the title */
+  }
+  
+  .login-input {
+    width: 100%;                 /* Full width of the input fields */
+    padding: 15px;              /* Increased padding for larger inputs */
+    margin-bottom: 15px;        /* Space between inputs */
+    border: 1px solid #ddd;     /* Border for inputs */
+    border-radius: 4px;         /* Rounded corners for inputs */
+  }
+  
+  .submit-button {
+    width: 100%;                 /* Full width for the button */
+    padding: 15px;              /* Increased padding for a larger button */
+    background-color: #4caf50;  /* Green background for the button */
+    color: white;               /* White text color */
+    border: none;               /* No border */
+    border-radius: 4px;         /* Rounded corners */
+    cursor: pointer;             /* Pointer cursor on hover */
+  }
+  
+  .submit-button:hover {
+    background-color: #45a049;   /* Darker green on hover */
+  }

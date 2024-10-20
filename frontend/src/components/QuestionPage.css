@@ -1,0 +1,117 @@
+/* QuestionPage.css */
+
+.question-page {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-left: 20px; /* Slight gap to hover panel */
+  width: calc(100vw - 140px); /* Adjusted width to avoid overflow */
+  box-sizing: border-box;     /* Include padding in the width */
+  transition: margin-left 0.3s ease, width 0.3s ease; /* Smooth transition */
+}
+
+.question-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;   
+  gap: 0px; 
+}
+
+.question-card {
+  padding: 15px;
+  background-color: #ffffff;
+  width: 100%;   
+  border-radius: 8px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.post-answer {
+  padding: 15px;
+  background-color: #ffffff;
+  width: 100%;             
+  border-radius: 8px;
+  box-sizing: border-box;   
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;  
+  gap: 3px;               
+}
+
+.answer-input {
+  width: 98%;              
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.post-answer-button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-top: 2px;
+  margin-right: 7px;
+  cursor: pointer;
+  align-self: flex-end;    
+}
+
+.answers-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;   
+}
+
+.no-answers {
+  text-align: center;
+  color: grey;
+  font-size: 1.2em;
+  margin-top: 20px;
+}
+
+.answer-card {
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 15px;
+}
+
+.posted-by {
+  font-weight: bold;
+}
+
+.answer-divider {
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 10px 0;
+}
+
+.answer-text {
+  margin-top: 10px;
+  font-size: 1em;
+}
+
+/* Hover Panel */
+
+.hover-panel {
+  width: 70px;
+  background-color: #f5f5f5;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  transition: width 0.3s ease-in-out;
+}
+
+.hover-panel.expanded {
+  width: 200px;
+}
+
+/* When hover panel is expanded, adjust margin and width */
+.hover-active .question-page {
+  margin-left: 200px; /* Retract to the left */
+  width: calc(100vw - 270px); /* Adjust width to match the new margin */
+  transition: margin-left 0.3s ease, width 0.3s ease;
+}

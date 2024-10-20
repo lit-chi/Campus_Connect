@@ -22,14 +22,14 @@ const userRoutes = require('./routes/userRoutes');
 const resourceRoutes = require('./routes/resourceRoutes');
 const questionRoutes = require('./routes/questionRoutes');
 const answerRoutes = require('./routes/answerRoutes');
-const activityRoutes = require('./routes/activityRoutes'); 
+const eventRoutes = require('./routes/eventRoutes'); 
 
 // Use routes
 app.use('/api/users', userRoutes);
 app.use('/api/resources', resourceRoutes);
 app.use('/api/questions', questionRoutes);
 app.use('/api/answers', answerRoutes);
-app.use('/api/activities', activityRoutes); 
+app.use('/api/events', eventRoutes); 
 
 // Start the server
 const PORT = process.env.PORT || 5000;

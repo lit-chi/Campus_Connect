@@ -1,0 +1,49 @@
+.events-page {
+    padding: 20px; /* Adjust padding to position everything higher */
+    margin-left: 200px; /* Move the events page to the right to align with the hover panel */
+    width: calc(100vw - 140px);
+  }
+  
+  .upcoming-events {
+    font-size: 1.5em; /* Font size adjustment */
+    margin-bottom: 5px; /* Space below the text */
+    margin-top: 5px; /* Space above the text */
+  }
+  
+  .events-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;   
+    gap: 10px; /* Adjust gap between event cards */
+  }
+  
+  .event-card {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px; /* Increased padding for better spacing */
+    margin-top: 0; /* Remove margin to lift the card closer */
+    width: 100%; /* Set a higher percentage width for the card */
+    max-width: 1000px; /* Increased maximum width */
+  }
+  
+  .event-image {
+    width: 100px; /* Adjust width as needed */
+    height: 100px; /* Adjust height as needed */
+    border-radius: 4px;
+    margin-right: 10px; /* Space between image and vertical line */
+  }
+  
+  .vertical-line {
+    width: 2px;
+    background-color: #ddd;
+    height: 80px; /* Adjust height as needed */
+    margin: 0 10px; /* Space between line and description */
+  }
+  
+  .event-description {
+    flex-grow: 1; /* Take up remaining space */
+  }
+  

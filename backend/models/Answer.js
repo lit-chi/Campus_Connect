@@ -1,11 +1,22 @@
 const mongoose = require('mongoose');
 
 const answerSchema = new mongoose.Schema({
-  content: { type: String, required: true },
-  files: [{ type: String }], // Array of file URLs (for attachments)
-  postedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  question: { type: mongoose.Schema.Types.ObjectId, ref: 'Question', required: true },
-  datePosted: { type: Date, default: Date.now },
+  questionId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Question', // Reference to the Question model
+  },
+  postedBy: {
+    type: String, // Store the username of the user who posted the answer
+    required: true,
+  },
+  text: {
+    type: String,
+    required: true,
+  },
 });
 
-module.exports = mongoose.model('Answer', answerSchema);
+// Export the Answer model
+const Answer = mongoose.model('Answer', answerSchema);
+module.exports = Answer;
+

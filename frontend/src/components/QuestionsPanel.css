@@ -1,0 +1,37 @@
+/* src/components/QuestionsPanel.css */
+.questions-panel {
+    width: 50px;
+    transition: width 0.3s ease;
+    overflow: hidden;
+  }
+  
+  .questions-panel:hover {
+    width: 300px;
+  }
+  
+  .panel-content {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .questions-panel:hover .panel-content {
+    opacity: 1;
+  }
+  
+  .post-question-btn {
+    margin-bottom: 10px;
+  }
+  
+  .question-card {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+  }
+  
+  .no-questions {
+    margin-top: 20px;
+    color: #555;
+    font-size: 1.2em;
+    text-align: center;
+  }
+  
+  

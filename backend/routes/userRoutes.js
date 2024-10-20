@@ -51,4 +51,28 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+// Login route
+router.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+    try {
+        const user = await User.findOne({ username });
+        if (!user) {
+            return res.status(400).json({ message: 'Invalid credentials' });
+        }
+
+        // For now, we are comparing plain text passwords (you can later hash them for security)
+        if (user.password !== password) {
+            return res.status(400).json({ message: 'Invalid credentials' });
+        }
+
+        // Return both the user ID and the username
+        res.status(200).json({ message: 'Login successful', user: { _id: user._id, username: user.username }});
+    } catch (err) {
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
 module.exports = router;
+
+
+

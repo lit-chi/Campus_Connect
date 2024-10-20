@@ -1,18 +1,36 @@
 const express = require('express');
 const router = express.Router();
+const Answer = require('../models/Answer'); // Adjust the path as necessary
 
-// Sample GET route for fetching answers
-router.get('/', (req, res) => {
-    res.send('Fetch all answers');
+// Get answers for a specific question
+router.get('/:questionId', async (req, res) => {
+    try {
+      const questionId = req.params.questionId.trim(); // Trim whitespace
+      const answers = await Answer.find({ questionId });
+      res.json(answers);
+    } catch (error) {
+      console.error("Error fetching answers:", error); // Log the actual error
+      res.status(500).json({ message: 'Error fetching answers', error: error.message });
+    }
+  });
+  
+
+// Post a new answer
+router.post('/', async (req, res) => {
+  const { questionId, postedBy, text } = req.body;
+
+  const answer = new Answer({
+    questionId,
+    postedBy,
+    text,
+  });
+
+  try {
+    const newAnswer = await answer.save();
+    res.status(201).json(newAnswer);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
 });
-
-// Sample POST route for creating a new answer
-router.post('/', (req, res) => {
-    const newAnswer = req.body; // Assume the answer details are sent in the body
-    // Logic to save the answer to the database would go here
-    res.status(201).send(newAnswer); // Sending back the created answer
-});
-
-// You can define more routes as needed...
 
 module.exports = router;
